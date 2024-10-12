@@ -1,0 +1,115 @@
+Les caractères de contrôle sont des caractères non imprimables qui ont des fonctions spéciales dans les systèmes informatiques. Ils se situent dans la plage ASCII de 0 à 31 et 127. Voici une explication détaillée sur la façon de générer et d'utiliser ces caractères de contrôle dans un terminal :
+
+### Caractères de Contrôle
+
+Voici quelques exemples de caractères de contrôle, leurs codes ASCII et leur signification :
+
+| Caractère | Code ASCII | Fonction                         |
+|-----------|------------|----------------------------------|
+| `NUL`     | 0          | Null (aucune fonction)           |
+| `SOH`     | 1          | Start of Heading (début de l'en-tête) |
+| `STX`     | 2          | Start of Text (début de texte)   |
+| `ETX`     | 3          | End of Text (fin de texte)       |
+| `EOT`     | 4          | End of Transmission (fin de transmission) |
+| `ENQ`     | 5          | Enquiry (demande d'information)  |
+| `ACK`     | 6          | Acknowledgment (accusé de réception) |
+| `BEL`     | 7          | Bell (sonner)                     |
+| `BS`      | 8          | Backspace (retour arrière)        |
+| `TAB`     | 9          | Horizontal Tab (tabulation)       |
+| `LF`      | 10         | Line Feed (saut de ligne)         |
+| `VT`      | 11         | Vertical Tab (tabulation verticale) |
+| `FF`      | 12         | Form Feed (alimentation de formulaire) |
+| `CR`      | 13         | Carriage Return (retour chariot)  |
+| `ESC`     | 27         | Escape (échappement)              |
+| `DEL`     | 127        | Delete (effacer)                  |
+
+### Comment Générer des Caractères de Contrôle
+
+#### Utiliser la Combinaison de Touches `Ctrl + [key]`
+
+Dans un terminal, vous pouvez générer des caractères de contrôle en utilisant la combinaison de touches `Ctrl` et une autre touche. Voici comment cela fonctionne :
+
+1. **Maintenir la touche `Ctrl`** : Appuyez et maintenez la touche `Ctrl` de votre clavier.
+2. **Appuyer sur une touche** : Pendant que vous maintenez `Ctrl`, appuyez sur une autre touche qui correspond à un caractère de contrôle.
+
+### Exemples
+
+- **Ctrl + A** : Cela génère le caractère de contrôle ASCII 1 (SOH).
+- **Ctrl + C** : Cela génère le caractère de contrôle ASCII 3 (ETX) et est souvent utilisé pour arrêter un programme en cours d'exécution dans le terminal.
+- **Ctrl + D** : Cela génère le caractère de contrôle ASCII 4 (EOT) et peut être utilisé pour indiquer la fin de l'entrée dans certains contextes.
+- **Ctrl + Z** : Cela génère le caractère de contrôle ASCII 26 (SUB) et est utilisé pour suspendre un processus en arrière-plan.
+
+### Tester dans le Terminal
+
+Si vous voulez tester votre fonction `ft_isprint` avec des caractères de contrôle, voici comment vous pouvez procéder :
+
+1. **Lancer votre programme** : Ouvrez un terminal et exécutez votre programme qui contient la fonction `wrapper_ft_isprint`.
+
+2. **Entrer un caractère de contrôle** :
+   - Lorsque vous êtes invité à entrer un caractère, maintenez `Ctrl` et appuyez sur la touche correspondante pour le caractère de contrôle que vous voulez tester.
+   - Par exemple, pour tester `Ctrl + A`, maintenez `Ctrl` et appuyez sur `A`.
+
+3. **Observer le résultat** : Votre programme affichera si le test a réussi ou échoué en fonction du caractère que vous avez entré.
+
+### Conclusion
+
+Les caractères de contrôle sont une partie essentielle de l'interaction avec les systèmes informatiques, et savoir comment les générer peut être utile pour tester des fonctions comme `ft_isprint`. En utilisant `Ctrl` avec d'autres touches, vous pouvez simuler l'entrée de ces caractères non imprimables dans votre programme.
+
+
+Pour simuler un caractère de nouvelle ligne (`\n`) dans un terminal lors du test de votre fonction `ft_isprint`, vous pouvez utiliser la combinaison de touches `Ctrl + J`. Voici un guide détaillé :
+
+### Simuler le Caractère de Nouvelle Ligne (`\n`)
+
+#### 1. **Lancer votre programme**
+- Ouvrez un terminal.
+- Exécutez votre programme qui contient la fonction `wrapper_ft_isprint`.
+
+#### 2. **Entrer un caractère**
+- Lorsque votre programme vous demande d'entrer un caractère, maintenez la touche `Ctrl` enfoncée.
+- Appuyez sur la touche `J` tout en maintenant `Ctrl`. Cela génère le caractère de contrôle `LF` (Line Feed), qui correspond à une nouvelle ligne (`\n`).
+
+#### 3. **Observer le résultat**
+- Votre programme devrait afficher le résultat du test pour le caractère que vous avez entré. Dans ce cas, il s'agira d'un test pour un caractère non imprimable (`\n`).
+
+### Exemple de Test
+
+Voici comment cela se déroulerait :
+
+1. **Programme affiche** :
+   ```
+   Entrez un caractère : 
+   ```
+
+2. **Vous appuyez sur** `Ctrl + J`.
+
+3. **Le programme traite le caractère** `\n` :
+   - Si votre fonction `ft_isprint` est correctement implémentée, elle devrait retourner `0` (indiquant que `\n` n'est pas un caractère imprimable).
+   - Votre programme affichera alors un message indiquant que le test a échoué.
+
+### Conclusion
+En utilisant `Ctrl + J`, vous pouvez simuler l'entrée d'un caractère de nouvelle ligne dans votre terminal pour tester comment votre fonction gère les caractères non imprimables. Cela vous aide à vous assurer que votre fonction `ft_isprint` fonctionne correctement pour tous les types de caractères.
+
+
+
+int	wrapper_ft_itoa(void)
+{
+	int		num;
+	char	*ft_result;
+	char	std_result[12];
+
+	clear();
+	my_name();
+	print_go_back();
+	echo();
+	refresh();
+	print_enter_int();
+	scanw("%d", &num);
+	ft_result = ft_itoa(num);
+	sprintf(std_result, "%d", num);
+	noecho();
+	clear();
+	my_name();
+	printw("\n%d\n\n", num);
+	print_go_back();
+	return (test_itoa(ft_result, std_result));
+}
